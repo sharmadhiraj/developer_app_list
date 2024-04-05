@@ -1,7 +1,11 @@
 library developer_app_list;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
+import 'package:developer_app_list/app.dart';
+import 'package:developer_app_list/util.dart';
+
+void main() async {
+  final List<App> apps = await Util.getIosApps("id1059226484");
+  for (App app in apps) {
+    print(app);
+  }
 }
