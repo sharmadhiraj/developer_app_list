@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:developer_app_list/app.dart';
+import 'package:developer_app_list/models/app.dart';
 
 class Util {
   static Future<String?> _fetchUrl(String url) async {
