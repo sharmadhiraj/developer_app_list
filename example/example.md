@@ -46,6 +46,6 @@ The **App** class represents an application and contains the following propertie
 
 ### Feedback and Contributions
 
-This is the first version of the plugin, and I am actively working on adding new features and
+This is the first version of the package, and I am actively working on adding new features and
 improvements. If you have any feedback, suggestions, or queries, feel free to reach out. Happy
 coding!
