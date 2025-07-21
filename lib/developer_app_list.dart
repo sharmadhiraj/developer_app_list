@@ -3,7 +3,7 @@
 ///
 /// This package provides methods to retrieve lists of apps developed by a
 /// specified developer for both Android and iOS platforms.
-library developer_app_list;
+library;
 
 import 'package:developer_app_list/models/app.dart';
 import 'package:developer_app_list/util/util.dart';

@@ -26,9 +26,11 @@ import 'package:developer_app_list/developer_app_list.dart';
 void main() async {
   // Example usage to fetch Android apps
   List<App> androidApps = await DeveloperAppList.getAndroidApps(developerId: 'developer_id');
+  //Eg. https://play.google.com/store/apps/dev?id=developerId
 
   // Example usage to fetch iOS apps
   List<App> iosApps = await DeveloperAppList.getIosApps(developerId: 'developer_id');
+  //https://apps.apple.com/us/developer/developer-name/developerId
 }
 ```
 

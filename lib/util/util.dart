@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:developer_app_list/models/app.dart';
+import 'package:flutter/material.dart';
 
 class Util {
   static Future<String?> _fetchUrl(String url) async {
@@ -12,10 +13,10 @@ class Util {
       if (response.statusCode == HttpStatus.ok) {
         return await utf8.decodeStream(response);
       } else {
-        print("Failed to fetch data. Status code: ${response.statusCode}");
+        debugPrint("Failed to fetch data. Status code: ${response.statusCode}");
       }
     } catch (error) {
-      print("Error: $error");
+      debugPrint("Error: $error");
     } finally {
       client.close();
     }
@@ -24,7 +25,7 @@ class Util {
 
   static Future<List<App>> getAndroidApps(String id) async {
     String? content = await Util._fetchUrl(
-      "https://play.google.com/store/apps/developer?id=${id.replaceAll(" ", "+")}",
+      "https://play.google.com/store/apps/dev?id=${id.replaceAll(" ", "+")}",
     );
     final List<App> apps = [];
     if (content != null) {
@@ -32,18 +33,19 @@ class Util {
       start = content.indexOf("data:", start) + 5;
       final int end = content.indexOf(", sideChannel:", start);
       content = content.substring(start, end);
-      for (dynamic item in jsonDecode(content)[0][1][0][22][0]) {
-        item = item[0];
+      for (dynamic item in jsonDecode(content)[0][1][0][21][0]) {
+        debugPrint(item[4].toString());
         apps.add(
           App(
             id: item[0][0],
             name: item[3],
             category: item[5],
             developerName: item[14],
-            rating: double.tryParse(item[4][0]) ?? 0,
+            rating: (item[4] as List).isEmpty
+                ? 0
+                : (double.tryParse(item[4][0]) ?? 0),
             imageUrl: item[1][3][2],
-            url:
-                "https://play.google.com/store/apps/details?id=np.com.dhirajsharma.football_score${item[0][0]}",
+            url: "https://play.google.com/store/apps/details?id=${item[0][0]}",
           ),
         );
       }
