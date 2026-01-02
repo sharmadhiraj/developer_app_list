@@ -29,7 +29,6 @@ List<App> iosApps = await DeveloperAppList.getIosApps(
   developerId: 'developer_id',
 );
 // Example developer URL: https://apps.apple.com/us/developer/developer-name/developerId
-}
 ```
 
 Replace 'developer_id' with the actual developer ID.
@@ -43,8 +42,8 @@ The `App` class represents a store application with the following properties:
 `category`: App category or genre  
 `developerName`: Name of the developer or publisher  
 `rating`: Average user rating  
-`imageUrl`: URL of the app icon or artwork.  
-`url`:Store page URL
+`imageUrl`: URL of the app icon or artwork  
+`url`: Store page URL
 `platform`: Platform where the app is published (AppPlatform.android or AppPlatform.ios)  
 `isFree`: Whether the app is free to install
 

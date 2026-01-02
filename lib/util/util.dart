@@ -61,15 +61,15 @@ class Util {
     return [];
   }
 
-  static Future<List<App>> getIosApps(String id) async {
-    id = id.split("/").last;
-    if (!RegExp(r'^id\d+$').hasMatch(id)) {
-      dPrint("Invalid Apple developer ID format: $id");
+  static Future<List<App>> getIosApps(String developerId) async {
+    developerId = developerId.split("/").last;
+    if (!RegExp(r'^id\d+$').hasMatch(developerId)) {
+      dPrint("Invalid Apple developer ID format: $developerId");
       return [];
     }
     try {
       final String? pageContent = await Util._fetchUrl(
-        "https://apps.apple.com/us/developer/x/$id?see-all=i-phonei-pad-apps",
+        "https://apps.apple.com/us/developer/x/$developerId?see-all=i-phonei-pad-apps",
       );
       if (pageContent == null) {
         return [];
