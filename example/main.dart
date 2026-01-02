@@ -4,7 +4,12 @@ import 'package:developer_app_list/util/util.dart';
 
 void main() async {
   final List<App> iosApps = await DeveloperAppList.getIosApps(
-    developerId: "id1671444635",
+    developerId: "zipoapps/id1671444635",
   );
   Util.dPrint(iosApps);
+
+  // final List<App> androidApps = await DeveloperAppList.getAndroidApps(
+  //   developerId: "7308236621174667518",
+  // );
+  // Util.dPrint(androidApps);
 }

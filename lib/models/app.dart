@@ -1,29 +1,37 @@
 import 'dart:convert';
 
-/// A class representing an application.
+import 'package:developer_app_list/models/platform.dart';
+
+/// Immutable model representing a store application.
 class App {
-  /// The unique identifier of the app.
+  /// Unique application identifier (package name / App Store ID).
   final String id;
 
-  /// The name of the app.
+  /// Display name of the application.
   final String name;
 
-  /// The category of the app.
+  /// App category or genre.
   final String category;
 
-  /// The name of the developer who created the app.
+  /// Developer or publisher name.
   final String developerName;
 
-  /// The rating of the app.
+  /// Average user rating.
   final double rating;
 
-  /// The URL of the app's image.
+  /// Primary app icon or artwork URL.
   final String imageUrl;
 
-  /// The URL of the app.
+  /// Store page URL.
   final String url;
 
-  /// Constructs a new [App] instance.
+  /// Platform where the app is published.
+  final AppPlatform platform;
+
+  /// Whether the app is free to install.
+  final bool isFree;
+
+  /// Creates an immutable [App] instance.
   const App({
     required this.id,
     required this.name,
@@ -32,18 +40,22 @@ class App {
     required this.rating,
     required this.imageUrl,
     required this.url,
+    required this.platform,
+    required this.isFree,
   });
 
   @override
   String toString() {
     return jsonEncode({
-      "ID": id,
-      "Name": name,
-      "Category": category,
-      "Developer Name": developerName,
-      "Rating": rating,
-      "Image Url": imageUrl,
-      "URL": url,
+      "id": id,
+      "name": name,
+      "category": category,
+      "developer": developerName,
+      "rating": rating,
+      "imageUrl": imageUrl,
+      "url": url,
+      "platform": platform.name,
+      "isFree": isFree,
     });
   }
 }

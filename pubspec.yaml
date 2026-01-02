@@ -1,6 +1,6 @@
 name: developer_app_list
-description: "Flutter package to fetch list of apps developed by a given developer from the App Store and Play Store."
-version: 0.0.2
+description: "A Dart/Flutter package to fetch a list of apps developed by a given developer from both the App Store and Play Store."
+version: 1.0.0
 homepage: https://pub.dev/packages/developer_app_list
 
 environment:
