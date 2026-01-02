@@ -1,53 +1,55 @@
 # Developer App List
 
-A Flutter package to fetch a list of apps developed by a given developer from both the App Store and
-Play Store.
+A Dart/Flutter package to fetch apps developed by a specific developer from Google Play Store and
+Apple
+App Store.
+
+Note: This package has no Flutter or UI dependencies and can be used in pure Dart projects as well.
 
 ### Features
 
-- Retrieve a list of Android apps developed by a specific developer.
-- Retrieve a list of iOS apps developed by a specific developer.
+- Fetch a list of Android apps by a developer.
+- Fetch a list of iOS apps by a developer.
 
 ### Installation
 
-To use this package, add `developer_app_list` as
-a [dependency in your pubspec.yaml file](https://flutter.dev/docs/development/packages-and-plugins/using-packages).
-
-```yaml
-dependencies:
-  developer_app_list: ^0.0.1
-```
+Check installation instructions on [pub.dev](https://pub.dev/packages/developer_app_list/install).
 
 ### Usage
 
-```dart
-import 'package:developer_app_list/developer_app_list.dart';
+```
+// Fetch Android apps
+List<App> androidApps = await DeveloperAppList.getAndroidApps(
+  developerId: 'developer_id',
+);
+// Example developer URL: https://play.google.com/store/apps/dev?id=developerId
 
-void main() async {
-  // Example usage to fetch Android apps
-  List<App> androidApps = await DeveloperAppList.getAndroidApps(developerId: 'developer_id');
-  //Eg. https://play.google.com/store/apps/dev?id=developerId
-
-  // Example usage to fetch iOS apps
-  List<App> iosApps = await DeveloperAppList.getIosApps(developerId: 'developer_id');
-  //https://apps.apple.com/us/developer/developer-name/developerId
-}
+// Fetch iOS apps
+List<App> iosApps = await DeveloperAppList.getIosApps(
+  developerId: 'developer_id',
+);
+// Example developer URL: https://apps.apple.com/us/developer/developer-name/developerId
 ```
 
-Replace 'developer_id' with the actual developer ID whose apps you want to fetch.
+Replace 'developer_id' with the actual developer ID.
 
-The **App** class represents an application and contains the following properties:
+### App Class
 
-`id`: Unique identifier of the app.  
-`name`: Name of the app.  
-`category`: Category of the app.  
-`developerName`: Name of the developer who created the app.  
-`rating`: Rating of the app.  
-`imageUrl`: URL of the app's image.  
-`url`: URL of the app.
+The `App` class represents a store application with the following properties:
+
+`id`: Unique identifier (package name on Android / App Store ID on iOS)  
+`name`: App display name  
+`category`: App category or genre  
+`developerName`: Name of the developer or publisher  
+`rating`: Average user rating  
+`imageUrl`: URL of the app icon or artwork  
+`url`: Store page URL
+`platform`: Platform where the app is published (AppPlatform.android or AppPlatform.ios)  
+`isFree`: Whether the app is free to install
+
+<hr>
 
 ### Feedback and Contributions
 
-This is the first version of the package, and I am actively working on adding new features and
-improvements. If you have any feedback, suggestions, or queries, feel free to reach out. Happy
-coding!
+Feedback, suggestions, or contributions are welcome. Feel free to open an issue or submit a pull
+request. Happy coding!
